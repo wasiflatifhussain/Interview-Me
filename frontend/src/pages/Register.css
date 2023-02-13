@@ -1,9 +1,11 @@
 .master3 {
-    background-image: url("register.jpeg");
+    background-image: url("register2.jpeg");
     background-size: cover;
-    filter: blur(8px);
+    /* filter: blur(8px); */
     margin: 0px;
     height: 100vh;
+    width: 51.2%;
+    opacity: 20%;
 
 }
 
@@ -20,12 +22,13 @@
 }
 
 .loginForm {
-    margin-left: 80px;
-    margin-top: 50px;
+    margin-left: 160px;
+    margin-top: 70px;
+    margin-right: 80px;
     background-color: white;
     border-radius: 1rem;
     height: 80%;
-    width: 500px;
+    width: 510px;
 }
 
 .signIn {
@@ -33,7 +36,7 @@
     padding-top: 120px;
     margin: auto;
     width: 35%;
-    color: #5D5C61;
+    color: #43544a;
 }
 
 .inputFields {
@@ -42,17 +45,17 @@
     font-size: 16px;
     padding-top: 60px;
     width: 300px;
-    border: 1px solid #5D5C61;
+    border: 1px solid #43544a;
     border-top: none;
     border-left: none;
     border-right: none;
     /* background: rgba(20, 20, 20, .2); */
-    color: #5D5C61;
+    color: #43544a;
     outline: none;
 }
 
 ::placeholder {
-    color: #5D5C61;
+    color: #43544a;
     text-align: center;
 }
 
@@ -63,8 +66,8 @@
 
 .join-btn {
     font-family: 'Comfortaa';
-    border: 1px solid #5D5C61;
-    background: #5D5C61;
+    /* border: 1px solid #5D5C61; */
+    background: #43544a;
     font-size: 22px;
     color: white;
     margin-top: 60px;
@@ -79,15 +82,15 @@
 }
 
 .join-btn:hover {
-    background: #B1A296;
-    /* padding: 10px 80px; */
+    background-color: #d9dbda;
+    color: #43544a;
 }
 
 .signUpPrompt {
     margin: auto;
     padding-left: 30px;
     width: 50%;
-    color: white;
+    color: #43544a;
     font-size: 65px;
     font-weight: bold;
     text-align: center;
@@ -96,10 +99,10 @@
 
 .join-btn2 {
     font-family: 'Comfortaa';
-    border: 1px solid #B1A296;
-    background: #B1A296;
+    /* border: 1px solid #B1A296; */
+    background: white;
     font-size: 22px;
-    color: white;
+    color: black;
     /* margin-top: 60px; */
     /* margin-left: 60px; */
     padding: 10px 80px;
@@ -112,6 +115,6 @@
 }
 
 .join-btn2:hover {
-    background: rgba(20, 20, 20, .8);
+    background: #43544a;
     /* padding: 10px 80px; */
 }

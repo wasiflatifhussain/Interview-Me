@@ -1,13 +1,15 @@
-.master2 {
+.master2l {
     background-image: url("loggings.jpeg");
     background-size: cover;
-    filter: blur(8px);
+    /* filter: blur(8px); */
     margin: 0px;
     height: 100vh;
+    width: 51.2%;
+    opacity: 20%;
 
 }
 
-.master {
+.masterl {
 
 
     height: 100vh;
@@ -19,53 +21,53 @@
     left: 0;
 }
 
-.loginForm {
-    /* margin-left: 80px; */
+.loginForml {
+    margin-left: 80px;
     margin-right: 80px;
-    margin-top: 50px;
+    margin-top: 70px;
     background-color: white;
     border-radius: 1rem;
     height: 80%;
     width: 500px;
 }
 
-.signIn {
+.signInl {
     font-size: 40px;
     padding-top: 120px;
     margin: auto;
     width: 30%;
-    color: #5D5C61;
+    color: #43544a;
 }
 
-.inputFields {
+.inputFieldsl {
     /* margin: 15px 0; */
     font-family: 'Comfortaa';
     font-size: 16px;
     padding-top: 60px;
     width: 300px;
-    border: 1px solid #5D5C61;
+    border: 1px solid #43544a;
     border-top: none;
     border-left: none;
     border-right: none;
     /* background: rgba(20, 20, 20, .2); */
-    color: #5D5C61;
+    color: #43544a;
     outline: none;
 }
 
 ::placeholder {
-    color: #5D5C61;
+    color: #43544a;
     text-align: center;
 }
 
-.signInForm {
+.signInForml {
     margin: auto;
     width: 60%;
 }
 
-.join-btn {
+.join-btnl {
     font-family: 'Comfortaa';
-    border: 1px solid #5D5C61;
-    background: #5D5C61;
+    /* border: 1px solid #5D5C61; */
+    background: #467061;
     font-size: 22px;
     color: white;
     margin-top: 60px;
@@ -79,28 +81,29 @@
 
 }
 
-.join-btn:hover {
-        background: #B1A296;
+.join-btnl:hover {
+        background-color: #d9dbda;
+        color: #43544a;
         /* padding: 10px 80px; */
 }
 
-.signUpPrompt {
+.signUpPromptl {
     margin: auto;
-    padding-left: 30px;
-    width: 50%;
-    color: white;
+    padding-left: 270px;
+    /* width: 50%; */
+    color: #43544a;
     font-size: 65px;
     font-weight: bold;
     text-align: center;
     /* backdrop-filter: blur(200px); */
 }
 
-.join-btn2 {
+.join-btn2l {
     font-family: 'Comfortaa';
-    border: 1px solid #B1A296;
-    background: #B1A296;
+    /* border: 1px solid #B1A296; */
+    background: white;
     font-size: 22px;
-    color: white;
+    color: black;
     /* margin-top: 60px; */
     /* margin-left: 60px; */
     padding: 10px 80px;
@@ -112,7 +115,8 @@
 
 }
 
-.join-btn2:hover {
-    background: rgba(20, 20, 20, .8);
+.join-btn2l:hover {
+    background-color: #43544a;
     /* padding: 10px 80px; */
+
 }

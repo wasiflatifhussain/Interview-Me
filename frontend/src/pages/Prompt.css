@@ -1,0 +1,81 @@
+.loginBtn {
+    background-color: #3b945e;
+    background-color: #467061;
+    /* border-radius: 1rem; */
+    width: 200px;
+    height: 45px;
+    font-family: "Comfortaa";
+    font-size: 15px;
+    color: white
+}
+
+.loginBtn:hover {
+    background-color: #43544a;
+    color: white;
+}
+
+.registerBtn {
+    margin-left: 20px;
+    background-color: #f2f2f2;
+    /* border-radius: 1rem; */
+    width: 200px;
+    height: 45px;
+    font-family: "Comfortaa";
+    font-size: 15px;
+}
+
+.registerBtn:hover {
+    background-color: #43544a;
+    color: white;
+}
+
+
+
+.buttons {
+    position: absolute;
+    top: 74%;
+    left: 36.65%;
+    right: 0;
+    margin: auto;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.backImg {
+    opacity: 15%;
+    height: 750px;
+    width: 750px;
+}
+
+body {
+    background-color: #d9dbda;
+
+}
+
+.logo1 {
+    font-size: 100px;
+    position: absolute;
+    top: 7%;
+    left: 58%;
+    margin: 0;
+    padding: 0;
+
+}
+
+.signPrompt {
+    width: 420px;
+    text-align: center;
+    font-size: 20px;
+    color: #43544a;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.quotes {
+    position: absolute;
+    top: 50%;
+    left: 58.5%;
+    color: #43544a;
+    font-weight: bold;
+}

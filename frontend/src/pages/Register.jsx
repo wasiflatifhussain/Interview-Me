@@ -23,28 +23,14 @@ function Register() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // if (email !== "" && password !== "") {
-    //     setUser(prev => {
-    //         return {
-    //             emailAdd: email,
-    //             passwordAdd: password
-    //         };
-    //     }
-    //     )
-        // console.log(user) 
+
     try {
-      const url = "http://localhost:8000/users/login";
+      const url = "http://localhost:8000/users/register";
       const response = await Axios.post(url,user)
-      // await fetch(url, {
-      //   method: 'POST',
-      //   mode: 'cors',
-      //   body: JSON.stringify(user)
-        
-      // })
       console.log(response?.data)
       console.log("Success")
     } catch { 
-        console.log("error")
+        console.log("Error")
     }
 
 
@@ -62,7 +48,7 @@ function Register() {
                 <form className="signInForm" onSubmit={handleSubmit}>
                      <input type="text" name="email" placeholder="Username or Email Address" className="inputFields" onChange={handleChange} value={user.email} />
                     <input type="password" name="password" placeholder="Password" className="inputFields" onChange={handleChange} value={user.password} />
-                    <input type="submit" className="join-btn" value="Sign In" />
+                    <input type="submit" className="join-btn" value="Sign Up" />
                 </form>
                 
             </div>
