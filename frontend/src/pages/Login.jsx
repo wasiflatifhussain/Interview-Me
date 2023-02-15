@@ -23,24 +23,9 @@ function Logging() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // if (email !== "" && password !== "") {
-    //     setUser(prev => {
-    //         return {
-    //             emailAdd: email,
-    //             passwordAdd: password
-    //         };
-    //     }
-    //     )
-        // console.log(user) 
     try {
       const url = "http://localhost:8000/users/login";
       const res = await Axios.post(url,user)
-      // await fetch(url, {
-      //   method: 'POST',
-      //   mode: 'cors',
-      //   body: JSON.stringify(user)
-        
-      // })
       console.log(res.data.token)
       console.log("Success") 
       navigate("/")
@@ -51,6 +36,23 @@ function Logging() {
         }
         console.log("Error")
     }
+
+		try {
+			const url = "http://localhost:8000/users/login";
+			const res = await Axios.post(url, user);
+      console.log("RECEIVED TOKEN: " + res.data.token)
+			sessionStorage.setItem("token", res.data.token);
+			// window.location = "/";
+      navigate("/")
+		} catch (error) {
+			if (
+				error.response &&
+				error.response.status >= 400 &&
+				error.response.status <= 500
+			) {
+				console.log(error.response.data.message);
+			}
+		}
 
 
 

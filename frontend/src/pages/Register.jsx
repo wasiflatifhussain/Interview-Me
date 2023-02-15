@@ -29,6 +29,9 @@ function Register() {
       const response = await Axios.post(url,user)
       console.log(response?.data)
       console.log("Success")
+      alert("Account made successfully. Please log in.")
+      handleRegister();
+
     } catch { 
         console.log("Error")
     }
