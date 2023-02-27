@@ -1,0 +1,60 @@
+.prep {
+    display: inline-block;
+    /* background: rgba(255, 255, 255, 0.2); */
+    text-decoration: none;
+    width: 500px;
+    height: 250px;
+    /* margin-top: 50px; */
+    margin-left: 40px;
+    /* border: 1px solid; */
+    border-radius: 0px;
+    overflow: hidden;
+    /* rgba(0, 0, 0, 0.2) */
+    box-shadow: inset 0 4px 60px white;   
+    position: relative;
+    top: -1.1%;
+    animation: sampletrans 0.75s;
+}
+    
+@keyframes sampletrans {
+    from {
+
+        margin-top: 30%;
+    }
+
+    to {
+        margin-top: 0%;
+    }
+}
+
+.prep.kit::after,
+.prep.kit::before {
+    content: "The Ultimate Interview Preparation Kit";
+    position: absolute;
+    text-align: left;
+    width: 300px;
+    color: black;
+    font-size: 23px;
+    font-weight: bold;
+    transition: all 800ms;
+    left: 24%;
+    top: 37%;
+}
+
+.prep.prep.kit:hover::after {
+    left: 100%;
+}
+
+.prep.kit::before {
+    width: 350px;
+    font-size: 20px;
+    font-weight: normal;
+    content: "Received major-specialized tips and tricks to building your CV, Cover Letter, as well as how to prepare for interviews, and WHEN and WHERE to start.";
+    left: 100%;
+    top: 20%;
+}
+
+.prep.prep.kit:hover::before {
+    left: 20%;
+
+}

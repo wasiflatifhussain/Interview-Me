@@ -1,0 +1,61 @@
+.cv {
+    display: inline-block;
+    /* background: rgba(255, 255, 255, 0.2); */
+    text-decoration: none;
+    width: 250px;
+    height: 250px;
+    margin-left: 80px;
+    margin-top: 50px;
+    /* border: 1px solid; */
+    border-radius: 0px;
+    overflow: hidden;
+
+    box-shadow: inset 0 4px 60px white;
+    position: relative;
+    animation: cvtrans 0.75s;
+}
+
+@keyframes cvtrans {
+    from {
+        /* opacity: 0;
+        transform: rotateX(-10deg); */
+        margin-top: -10%;
+    }
+    to {
+        /* opacity: 1;
+        transform: rotateX(0'angle'); */
+        margin-top: 0%;
+    }
+}
+
+.cv.mover::after,
+.cv.mover::before {
+    content: "Instant Resume Feedback →";
+    position: absolute;
+    text-align: left;
+    width: 120px;
+    color: black;
+    font-size: 23px;
+    font-weight: bold;
+    transition: all 800ms;
+    left: 28%;
+    top: 26%;
+}
+
+.cv.cv.mover:hover::after {
+    left: 100%;
+}
+
+.cv.mover::before {
+    width: 190px;
+    font-size: 20px;
+    font-weight: normal;
+    content: "AI-Generated Personalized Feedback on your CV, along with tips for improvement and skill pickups →";
+    left: 100%;
+    top: 8%;
+}
+
+.cv.cv.mover:hover::before {
+    left: 15%;
+
+}

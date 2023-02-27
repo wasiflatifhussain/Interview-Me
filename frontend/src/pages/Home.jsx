@@ -1,8 +1,14 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import CoverHover from '../components/CoverHover';
+import CvHover from '../components/CvHover';
+import HireVue from '../components/HireVue';
 import Navbar from '../components/Navbar';
 import Sidecar from '../components/SideNavigation';
-// import "./Home.css";
+import "./Home.css";
+import TopJobs from '../components/TopJobs';
+import SampleKit from '../components/SampleKit';
+import BuddyView from '../components/BuddyView';
 // import pic from "./homeback2.jpeg";
 // import logo from "./logo1.jpeg";
 
@@ -11,14 +17,7 @@ import Sidecar from '../components/SideNavigation';
 
 function Home() {
   let navigate = useNavigate();
-  const handleLogin = () => {
-    let path = "/login";
-    navigate(path);
-  }
-  const handleRegister = () => {
-    let path = "/register";
-    navigate(path);
-  } 
+
 
   useEffect (() => {
     const token = localStorage.getItem("TOKEN");
@@ -29,11 +28,22 @@ function Home() {
   return (
 
       <div>
-        
-        <Navbar />
-        <Sidecar />
-        {/* Home */}
-        
+        <div>
+          <Navbar />
+      
+        </div>
+        <div style={{display: "flex"}}>
+          {/* make the squares come from left right up down using transform */}
+          <Sidecar />
+          <div style={{display: "flex", flexWrap: 'wrap'}}>
+            <CvHover />
+            <CoverHover />
+            <HireVue />
+            <TopJobs />
+            <SampleKit />
+            <BuddyView />
+          </div> 
+        </div>
       </div>
 
       

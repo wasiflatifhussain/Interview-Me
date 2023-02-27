@@ -33,7 +33,7 @@ const SideNavigation = () => {
   const [collapsed, setCollapsed] = useState(false);
   const styles = {
     sideBarHeight: {
-      height: "145vh"
+      height: "100vh",
     },
     menuIcon: {
       float: "left",
@@ -53,7 +53,7 @@ const SideNavigation = () => {
     navigate("/prompt")
   }
   return (
-    <div>
+    <div style={{padding: "0px",margin:"0px",display:"inline-block", width:"16%"}}>
 
     {/* <Navbar /> */}
 
@@ -69,7 +69,7 @@ const SideNavigation = () => {
         <Link to="/">Home</Link>
         </Menuitem>
         <Menuitem icon={<FaUserTie />} href="/employees">
-          <Link to="/resume">Resume </Link>
+          <Link to="/cv">Resume </Link>
         </Menuitem>
         <Menuitem icon={<RiPagesLine />}>
           <Link to="/covers">Cover Letter</Link>

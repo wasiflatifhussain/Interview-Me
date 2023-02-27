@@ -4,6 +4,7 @@ import Home from './Home';
 import Login from './Login';
 import Prompt from './Prompt';
 import Register from './Register';
+import CV from "./CV";
 
 
 function Pages() {
@@ -14,6 +15,7 @@ function Pages() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/prompt" element={<Prompt />} />
+        <Route path="/cv" element={<CV />} />
     </Routes>
   )
 }

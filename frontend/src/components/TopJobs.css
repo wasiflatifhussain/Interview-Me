@@ -1,0 +1,60 @@
+.top {
+    display: inline-block;
+    /* background: rgba(255, 255, 255, 0.2); */
+    text-decoration: none;
+    width: 220px;
+    height: 300px;
+    /* margin-top: 50px; */
+    margin-left: 80px;
+    /* border: 1px solid; */
+    border-radius: 0px;
+    overflow: hidden;
+
+    box-shadow: inset 0 4px 60px white;
+    position: relative;
+    top: -8%;
+    animation: jobtrans 0.75s;
+}
+
+@keyframes jobtrans {
+    from {
+
+        margin-top: 30%;
+    }
+
+    to {
+        margin-top: 0%;
+    }
+}
+
+.top.moveit::after,
+.top.moveit::before {
+    content: "Top Jobs Listings →";
+    position: absolute;
+    text-align: left;
+    width: 100px;
+    color: black;
+    font-size: 23px;
+    font-weight: bold;
+    transition: all 800ms;
+    left: 30%;
+    top: 32%;
+}
+
+.top.top.moveit:hover::after {
+    left: 100%;
+}
+
+.top.moveit::before {
+    width: 150px;
+    font-size: 20px;
+    font-weight: normal;
+    content: "Browse for the best jobs meeting your skillsets in your city →";
+    left: 100%;
+    top: 25%;
+}
+
+.top.top.moveit:hover::before {
+    left: 19%;
+
+}
