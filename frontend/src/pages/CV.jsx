@@ -1,6 +1,7 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import SideNavigation from '../components/SideNavigation'
+import React from 'react';
+import DropZone from '../components/DropZone';
+import Navbar from '../components/Navbar';
+import SideNavigation from '../components/SideNavigation';
 
 export default function CV() {
   return (
@@ -19,7 +20,15 @@ export default function CV() {
             <TopJobs />
             <SampleKit />
             <BuddyView /> */}
+            <DropZone />
+            {/* <UploadFiles /> */}
+          <div>Next steps:
+            first get the data from s3 and make cards for each cv with view and "analyse" options
+            allow max 5 cv or something
+            if deletes cv, then delete it from s3
+          </div>
           </div> 
+
         </div>
       </div>
   )

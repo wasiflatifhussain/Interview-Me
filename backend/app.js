@@ -4,12 +4,22 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const Joi = require("joi");
 const jwt = require("jsonwebtoken");
+const aws = require("aws-sdk");
+const multer = require('multer');
+const multerS3 = require('multer-s3');
 
 JWTPRIVATEKEY = "urppissmol";
 
 const cors = require("cors");
 
 const app = express();
+
+const s3 = new aws.S3({
+  accessKeyId: 'AKIAQGBUOH2YSO2HZ22H',
+  secretAccessKey: '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'
+});
+
+const upload = multer();
 
 app.set('view engine','ejs');
 // app.use(bodyParser.urlencoded({extended: true}));
@@ -45,32 +55,38 @@ userSchema.methods.generateAuthToken = function () {
 
 const User = new mongoose.model("User",userSchema);
 
+app.post("/users/upload/cv",upload.single("file"),(req,res) => {
+  // extract the uploaded file from the form data
+  const file = req.file;
+  
+  // extract the user ID from the form data
+  const userName = req.body.userName;
+  
+  // upload the file to the user's folder in the S3 bucket
+  const bucketName = 'interview-me-wasif';
+  const userFolder = `user_uploads/${userName}/resumes`;
+  const params = {
+    Bucket: bucketName,
+    Key: `${userFolder}/${file.originalname}`,
+    Body: file.buffer
+  };
+  
+  s3.upload(params, (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error uploading file to S3');
+    } else {
+      console.log(`File uploaded successfully to ${data.Location}`);
+      res.send('File uploaded successfully');
+    }
+  });
+})
+
 app.get("/users", (req,res) => {
     res.json(users)
 })
 
 app.post("/users/register", async (req,res) => {
-    // try {
-    //     const salt = await bcrypt.genSalt();
-    //     const hashedPassword = await bcrypt.hash(req.body.password, salt)
-    //     console.log(salt)
-    //     console.log(hashedPassword)
-    //     const user = new User({
-    //         email: req.body.email, 
-    //         password: hashedPassword
-    //     });
-    //     user.save(function(err) {
-    //         if (err) {
-    //             console.log("Unsuccessful Sign-Up Attempt.")
-    //         } else {
-    //             console.log("Successful Sign-Up.")
-    //         }
-    //     })
-    //     // users.push(user)
-    //     res.status(201).send()
-    // } catch {
-    //     res.status(500).send()
-    // }
     console.log(req.body.email)
 	try {
 		const { error } = validateReg(req.body);
@@ -98,29 +114,6 @@ app.post("/users/register", async (req,res) => {
 });
 
 app.post("/users/login", async (req,res) => {
-
-    // const emailAdd = req.body.email;
-    // const password = req.body.password;
-    // User.findOne({email: emailAdd}, function(err,foundUser) {
-    //     if (err) {
-    //         console.log(err);
-    //     }
-    //     else {
-    //         if (foundUser) {
-    //             bcrypt.compare(password, foundUser.password,function(err, result) {
-    //                 if (result === true) {
-    //                     console.log("Login Successful!")
-    //                     res.send(foundUser)
-    //                     //res.render("Login Success!");
-    //                 }
-    //                 else {
-    //                     console.log("Incorrect Password!")
-    //                     //res.render("Incorrect Password!")
-    //                 }
-    //             })
-    //         }
-    //     }
-    // })
 	try {
 		const { error } = validateLogin(req.body);
 		if (error)
@@ -140,7 +133,7 @@ app.post("/users/login", async (req,res) => {
         console.log("User verified")
 		const token = user.generateAuthToken();
         console.log("Generated auth token")
-		res.status(200).send({ token: token, message: "Logged in successfully" });
+		res.status(200).send({ email: req.body.email, token: token, message: "Logged in successfully" });
 	} catch (error) {
 		res.status(500).send({ message: "Internal Server Error" });
 	}

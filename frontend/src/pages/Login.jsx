@@ -29,7 +29,10 @@ function Logging() {
       console.log(res.data.token)
       console.log("Success") 
       navigate("/")
+      localStorage.setItem("userName",JSON.stringify(res.data.email));
+      console.log(res.data.email)
       localStorage.setItem("TOKEN",res.data.token);
+      // sessionStorage.setItem("token", res.data.token);
     } catch (error) { 
         if (error.response && error.response.status >= 400 && error.response.status <= 500) {
           console.log(error.response.data.message)
@@ -37,22 +40,22 @@ function Logging() {
         console.log("Error")
     }
 
-		try {
-			const url = "http://localhost:8000/users/login";
-			const res = await Axios.post(url, user);
-      console.log("RECEIVED TOKEN: " + res.data.token)
-			sessionStorage.setItem("token", res.data.token);
-			// window.location = "/";
-      navigate("/")
-		} catch (error) {
-			if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
-			) {
-				console.log(error.response.data.message);
-			}
-		}
+		// try {
+		// 	const url = "http://localhost:8000/users/login";
+		// 	const res = await Axios.post(url, user);
+    //   console.log("RECEIVED TOKEN: " + res.data.token)
+		// 	sessionStorage.setItem("token", res.data.token);
+		// 	// window.location = "/";
+    //   navigate("/")
+		// } catch (error) {
+		// 	if (
+		// 		error.response &&
+		// 		error.response.status >= 400 &&
+		// 		error.response.status <= 500
+		// 	) {
+		// 		console.log(error.response.data.message);
+		// 	}
+		// }
 
 
 

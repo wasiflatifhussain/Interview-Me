@@ -57,7 +57,7 @@ function Navbar() {
               <Link to="/Works">Browse Works</Link>
             </li> */}
             <li style={{paddingLeft: "40px"}}>
-              <Link to="/help">Name</Link>
+              <Link to="/help">{JSON.parse(localStorage.getItem('userName'))}</Link>
               <FaUserCircle size={35} color="white" />
             </li>
           </ul>

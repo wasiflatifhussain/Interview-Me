@@ -36,6 +36,7 @@ function Home() {
           {/* make the squares come from left right up down using transform */}
           <Sidecar />
           <div style={{display: "flex", flexWrap: 'wrap'}}>
+
             <CvHover />
             <CoverHover />
             <HireVue />
