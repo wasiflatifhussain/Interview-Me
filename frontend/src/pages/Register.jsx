@@ -49,8 +49,8 @@ function Register() {
             <div className="loginForm">
                 <div className="signIn">Sign-Up</div>
                 <form className="signInForm" onSubmit={handleSubmit}>
-                     <input type="text" name="email" placeholder="Username or Email Address" className="inputFields" onChange={handleChange} value={user.email} />
-                    <input type="password" name="password" placeholder="Password" className="inputFields" onChange={handleChange} value={user.password} />
+                     <input type="email" name="email" placeholder="Username or Email Address" className="inputFields" onChange={handleChange} value={user.email} required />
+                    <input type="password" name="password" placeholder="Password" className="inputFields" onChange={handleChange} value={user.password} required />
                     <input type="submit" className="join-btn" value="Sign Up" />
                 </form>
                 

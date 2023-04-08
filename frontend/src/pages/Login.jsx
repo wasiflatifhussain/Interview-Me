@@ -69,8 +69,8 @@ function Logging() {
           <div className="loginForml">
               <div className="signInl">Sign-In</div>
               <form className="signInForml" onSubmit={handleSubmit}>
-                  <input type="text" name="email" placeholder="Username or Email Address" className="inputFieldsl" onChange={handleChange} value={user.email} />
-                  <input type="password" name="password" placeholder="Password" className="inputFieldsl" onChange={handleChange} value={user.password} />
+                  <input type="email" name="email" placeholder="Username or Email Address" className="inputFieldsl" onChange={handleChange} value={user.email} required />
+                  <input type="password" name="password" placeholder="Password" className="inputFieldsl" onChange={handleChange} value={user.password} required />
                   <input type="submit" className="join-btnl" value="Sign In" />
               </form>
               

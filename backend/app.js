@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const aws = require("aws-sdk");
 const multer = require('multer');
 const multerS3 = require('multer-s3');
+require("dotenv").config();
 
 JWTPRIVATEKEY = "urppissmol";
 
@@ -15,8 +16,8 @@ const cors = require("cors");
 const app = express();
 
 const s3 = new aws.S3({
-  accessKeyId: 'AKIAQGBUOH2YSO2HZ22H',
-  secretAccessKey: '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'
+  accessKeyId: process.env.REACT_APP_ACCESS,
+  secretAccessKey: process.env.REACT_APP_SECRET
 });
 
 const upload = multer();
@@ -73,6 +74,7 @@ app.post("/users/upload/cv",upload.single("file"),(req,res) => {
   
   s3.upload(params, (err, data) => {
     if (err) {
+	  console.log("error bro")
       console.error(err);
       res.status(500).send('Error uploading file to S3');
     } else {
