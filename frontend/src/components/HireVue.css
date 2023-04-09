@@ -13,6 +13,7 @@
     box-shadow: inset 0 4px 60px white;   
     position: relative;
     animation: hiretrans 0.75s;
+    
 }
 
 @keyframes hiretrans {

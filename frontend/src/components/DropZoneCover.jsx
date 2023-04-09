@@ -37,40 +37,23 @@ const Container = styled.div`
   transition: border .24s ease-in-out;
   width: 1100px;
   height: 150px;
-  margin-left: 50px;
+  margin-left: 80px;
   margin-top: 30px;
   ${'' /* margin: 30px 80px; */}
 `;
 
-function DropZone() {
+function DropZoneCover() {
   const [selectedFile,setFile] = useState(null);
   const [uploadedFileName, setUploadedFileName] = useState('');
+  const [uploadStatus, setUploadStatus] = useState('');
 
-    // the configuration information is fetched from the .env selectedFile
-//   const config = {
-//         bucketName: process.env.REACT_APP_BUCKET_NAME,
-//         region: process.env.REACT_APP_REGION,
-//         accessKeyId: process.env.REACT_APP_ACCESS,
-//         secretAccessKey: process.env.REACT_APP_SECRET,
-//   }
+
   const onDrop = useCallback((acceptedFiles) => {
     setFile(acceptedFiles[0])
     setUploadedFileName(acceptedFiles[0].name)
   })
 
-//   const handleUpload = () => {
-//     console.log("Uploading File",selectedFile.name);
-    
-//   }
 
-//   const uploadFile = async (selectedFile) => {
-//         const ReactS3Client = new S3(config);
-//         // the name of the selectedFile uploaded is used to upload it to S3
-//         ReactS3Client
-//         .uploadFile(selectedFile, selectedFile.name)
-//         .then(data => console.log(data.location))
-//         .catch(err => console.error(err))
-//   }
 
   const handleSubmit = async(event) => {
     event.preventDefault();
@@ -79,8 +62,10 @@ function DropZone() {
     formData.append('userName',JSON.parse(localStorage.getItem("userName")));
     // send the form data to the backend API using Axios
     try {
-      const response = await axios.post('http://localhost:8000/users/upload/cv', formData);
-      console.log(response.data);
+      const response = await axios.post('http://localhost:8000/users/upload/cover', formData);
+      console.log("success");
+      setUploadStatus("success");
+      
     } catch (error) {
       console.error(error);
     }
@@ -99,18 +84,32 @@ function DropZone() {
                             'application/vnd.openxmlformats-officedocument.wordprocessingml.document':[]}});
   
   return (
-    <div className="container">
+    <div id="container">
       <Container {...getRootProps({isFocused, isDragAccept, isDragReject})}>
         <input {...getInputProps()} />
-        <p>Drag and drop resume here, or click to select file to upload to your account</p>
+        <p>Drag and drop cover letter here, or click to select file to upload to your account</p>
         <em>(Only *.pdf and *.docx files will be accepted)</em>
       </Container>
-      <input type="submit" onClick={handleSubmit} value="Click to upload dropped file" className='adjustUp'/>
+      
       {uploadedFileName && (
-        <p className='promptdrop'>Dropped File: <br></br>{uploadedFileName}. Upload?</p>
+        <div>
+        <input id="upBtn" type="submit" onClick={handleSubmit} value="Click to upload dropped file" className='adjustUp'/>
+        <p id='promptdrop'>Dropped File: <br></br>{uploadedFileName}. Upload?</p>
+        </div>
+        /* document.getElementById("container").style.marginBottom = "20px" */
+      )}
+      {uploadStatus && (
+        document.getElementById("promptdrop").innerHTML = "File Uploaded Successfully.",
+        setUploadStatus(""),
+        setTimeout(function() {
+          document.getElementById("promptdrop").innerHTML = "";
+          setFile(null);
+          setUploadedFileName("");
+        },5000)
+         
       )}
     </div>
   );
 }
 
-export default DropZone;
+export default DropZoneCover;

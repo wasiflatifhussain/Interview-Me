@@ -5,6 +5,7 @@ import Login from './Login';
 import Prompt from './Prompt';
 import Register from './Register';
 import CV from "./CV";
+import Cover from './Cover';
 
 
 function Pages() {
@@ -16,6 +17,7 @@ function Pages() {
         <Route path="/register" element={<Register />} />
         <Route path="/prompt" element={<Prompt />} />
         <Route path="/cv" element={<CV />} />
+        <Route path="/covers" element={<Cover />} />
     </Routes>
   )
 }

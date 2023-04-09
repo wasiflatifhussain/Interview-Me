@@ -6,7 +6,7 @@ import "./CoverHover.css";
 export default function CoverHover() {
   let navigate = useNavigate();
   const coverHandler = () => {
-    let path = "/cover";
+    let path = "/covers";
     navigate(path);
   }
   return (

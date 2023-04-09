@@ -1,11 +1,15 @@
-.promptdrop {
+#promptdrop {
     text-align: center;
 }
 
 .adjustUp {
-    margin-left: 440px;
+    margin-left: 450px;
     margin-top: 20px;
     margin-bottom: 10px;
     padding: 5px 20px;
     
+}
+
+#container {
+    margin-bottom: 30px;
 }

@@ -33,7 +33,7 @@ const SideNavigation = () => {
   const [collapsed, setCollapsed] = useState(false);
   const styles = {
     sideBarHeight: {
-      height: "100vh",
+      height: "200vh",
     },
     menuIcon: {
       float: "left",
@@ -68,7 +68,7 @@ const SideNavigation = () => {
         <Menuitem icon={<FaColumns />}>
         <Link to="/">Home</Link>
         </Menuitem>
-        <Menuitem icon={<FaUserTie />} href="/employees">
+        <Menuitem icon={<FaUserTie />}>
           <Link to="/cv">Resume </Link>
         </Menuitem>
         <Menuitem icon={<RiPagesLine />}>

@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import DropZone from '../components/DropZoneResume';
+import DropZone from '../components/DropZoneCover';
 import Navbar from '../components/Navbar';
 import SideNavigation from '../components/SideNavigation';
-import CvCards from '../components/CvCards';
-import "./CV.css";
+import CoverCards from '../components/CoverCards';
+import "./Cover.css";
 import axios from 'axios';
 
-export default function CV() {
-  const [cvDatas, setcvDatas] = useState();
+
+export default function Cover() {
+  const [coverDatas, setcoverDatas] = useState();
   
   useEffect(() => {
-    fetchCVData();
+    fetchCoverData();
   },[])
 
-  const fetchCVData = async () => {
+  const fetchCoverData = async () => {
     try {
       const formData = new FormData();
       formData.append('userName',JSON.parse(localStorage.getItem("userName")));
-      const response = await axios.get('http://localhost:8000/users/resumes',{params: {userName: JSON.parse(localStorage.getItem("userName"))}});
+      const response = await axios.get('http://localhost:8000/users/covers',{params: {userName: JSON.parse(localStorage.getItem("userName"))}});
       console.log(response.data);
-      setcvDatas(response.data);
+      setcoverDatas(response.data);
     } catch (err) {
       console.log("error fetching on load");
     }
   }
-  
   return (
       <div>
         <div>
@@ -33,27 +33,27 @@ export default function CV() {
         <div style={{display: "flex"}}>
           <SideNavigation />
           <div style={{display: "flex", flexWrap: 'wrap'}}>
-          <DropZone />
-          <div class="resumeCol">Saved Resumes:</div>
-
-          {cvDatas && 
-            cvDatas.map((cv) => {
-              console.log(typeof cv.Key)
+            <DropZone />
+          <div class="resumeCol">Saved Cover Letters:</div>
+          {coverDatas && 
+            coverDatas.map((cover) => {
+              console.log(typeof cover.Key)
               const regex = /[^/]*$/;
-              const fileName = cv.Key.match(regex)[0];
+              const fileName = cover.Key.match(regex)[0];
               const regex2 = /^\d{4}-\d{2}-\d{2}/;
-              const uploadDate = cv.LastModified.match(regex2)[0];
+              const uploadDate = cover.LastModified.match(regex2)[0];
               return (
-                <CvCards 
+                <CoverCards 
                   fileName={fileName}
                   uploadDate={uploadDate}
                 />
               )
             })
           }
-
           <div>Next steps:
-            to each of the file names, add the a href and the link is the localhost get request that downloads the file for that link
+            first get the data from s3 and make cards for each cover with view and "analyse" options
+            allow max 5 cover or something
+            if deletes cover, then delete it from s3
           </div>
           </div> 
 

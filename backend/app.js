@@ -84,6 +84,111 @@ app.post("/users/upload/cv",upload.single("file"),(req,res) => {
   });
 })
 
+app.post("/users/upload/cover",upload.single("file"),(req,res) => {
+  // extract the uploaded file from the form data
+  const file = req.file;
+  
+  // extract the user ID from the form data
+  const userName = req.body.userName;
+  console.log(req.file);
+  
+  // upload the file to the user's folder in the S3 bucket
+  const bucketName = 'interview-me-wasif';
+  const userFolder = `user_uploads/${userName}/covers`;
+  const params = {
+    Bucket: bucketName,
+    Key: `${userFolder}/${file.originalname}`,
+    Body: file.buffer
+  };
+  
+  s3.upload(params, (err, data) => {
+    if (err) {
+	  console.log("error bro")
+      console.error(err);
+      res.status(500).send('Error uploading file to S3');
+    } else {
+      console.log(`File uploaded successfully to ${data.Location}`);
+      res.send('File uploaded successfully');
+    }
+  });
+})
+
+app.get("/users/resumes", async (req, res) => {
+    //extract the uploaded file from the form data
+	// const file = req.file;
+	
+	// extract the user ID from the form data
+	const userName = req.query.userName;
+
+	// const userName = "newbro@gmail.com";
+	
+	// upload the file to the user's folder in the S3 bucket
+	const bucketName = 'interview-me-wasif';
+	const userFolder = `user_uploads`;
+	const params = {
+		Bucket: bucketName,
+		Prefix: `${userFolder}/${userName}/resumes`
+	};
+	let files = await s3.listObjectsV2(params).promise()
+
+			let fileData = files.Contents.map(item => item);
+			res.send(fileData)
+		
+})
+
+// https://www.youtube.com/watch?v=hpO_3GwmBAk&ab_channel=AdityaJoshi
+app.get("/download/resumes", async (req, res) => {
+  const fileName = req.params.fileName;
+  const userName = req.query.userName;
+  // Key : `${userFolder}/${userName}/resumes/${fileName}`
+	const bucketName = 'interview-me-wasif';
+	const userFolder = `user_uploads`;
+	const params = {
+		Bucket: bucketName,
+    Key: `${userFolder}/${userName}/resumes/${fileName}`
+  }
+  let fileRetrieved = await s3.getObject(params).promise();
+  res.send(fileRetrieved.Body);
+})
+
+app.get("/users/covers", async (req, res) => {
+    //extract the uploaded file from the form data
+	// const file = req.file;
+	
+	// extract the user ID from the form data
+	const userName = req.query.userName;
+
+	// const userName = "newbro@gmail.com";
+	
+	// upload the file to the user's folder in the S3 bucket
+	const bucketName = 'interview-me-wasif';
+	const userFolder = `user_uploads`;
+	const params = {
+		Bucket: bucketName,
+		Prefix: `${userFolder}/${userName}/covers`
+	};
+	let files = await s3.listObjectsV2(params).promise()
+
+			let fileData = files.Contents.map(item => item);
+			res.send(fileData)
+		
+})
+
+// https://www.youtube.com/watch?v=hpO_3GwmBAk&ab_channel=AdityaJoshi
+app.get("/download/covers", async (req, res) => {
+  const fileName = req.params.fileName;
+  const userName = req.query.userName;
+  // Key : `${userFolder}/${userName}/resumes/${fileName}`
+	const bucketName = 'interview-me-wasif';
+	const userFolder = `user_uploads`;
+	const params = {
+		Bucket: bucketName,
+    Key: `${userFolder}/${userName}/coverss/${fileName}`
+  }
+  let fileRetrieved = await s3.getObject(params).promise();
+  res.send(fileRetrieved.Body);
+})
+
 app.get("/users", (req,res) => {
     res.json(users)
 })
